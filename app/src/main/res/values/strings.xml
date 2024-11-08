@@ -16,4 +16,5 @@
     <string name="third_description">A layout composable that places its children in a horizontal sequence.</string>
     <string name="fourth_title">Column composable</string>
     <string name="fourth_description">A layout composable that places its children in a vertical sequence.</string>
+    <string name="title_activity_business_card">BusinessCardActivity</string>
 </resources>
