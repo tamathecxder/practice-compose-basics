@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,7 +40,7 @@ class ComposeQuadrantActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    QuadrantCardsContainer(modifier = Modifier)
+                    QuadrantCardsContainer()
                 }
             }
         }
@@ -46,36 +48,36 @@ class ComposeQuadrantActivity : ComponentActivity() {
 }
 
 @Composable
-fun QuadrantCardsContainer(modifier: Modifier = Modifier) {
-    Column (modifier = modifier.fillMaxSize()) {
-        Row(modifier = modifier.fillMaxHeight(0.5f).weight(0.5f)) {
+fun QuadrantCardsContainer() {
+    Column (Modifier.fillMaxSize()) {
+        Row(modifier = Modifier.weight(1f)) {
             QuadrantCard(
-                modifier = modifier.weight(1f),
+                modifier = Modifier.weight(1f),
                 color = Color(0xFFEADDFF),
-                title = "Text composable",
-                description = "Displays text and follows the recommended Material Design guidelines."
+                title = stringResource(R.string.first_title),
+                description = stringResource(R.string.first_description)
             )
 
             QuadrantCard(
-                modifier = modifier.weight(1f),
+                modifier = Modifier.weight(1f),
                 color = Color(0xFFD0BCFF),
-                title = "Image composable",
-                description = "Creates a composable that lays out and draws a given Painter class object."
+                title = stringResource(R.string.second_title),
+                description = stringResource(R.string.second_description)
             )
         }
-        Row(modifier = modifier.fillMaxHeight(0.5f).weight(0.5f)) {
+        Row(modifier = Modifier.weight(1f)) {
             QuadrantCard(
-                modifier = modifier.weight(1f),
+                modifier = Modifier.weight(1f),
                 color = Color(0xFFB69DF8),
-                title = "Row composable",
-                description = "A layout composable that places its children in a horizontal sequence."
+                title = stringResource(R.string.third_title),
+                description = stringResource(R.string.third_description)
             )
 
             QuadrantCard(
-                modifier = modifier.weight(1f),
+                modifier = Modifier.weight(1f),
                 color = Color(0xFFF6EDFF),
-                title = "Column composable",
-                description = "A layout composable that places its children in a vertical sequence."
+                title = stringResource(R.string.fourth_title),
+                description = stringResource(R.string.fourth_description)
             )
         }
     }
@@ -83,29 +85,24 @@ fun QuadrantCardsContainer(modifier: Modifier = Modifier) {
 
 @Composable
 fun QuadrantCard(modifier: Modifier, color: Color, title: String, description: String) {
-    Card(
-        modifier = modifier,
-        shape = RoundedCornerShape(0.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = color,
-        ),
-        ) {
-        Column(
-            modifier = modifier.padding(16.dp).fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Text(
-                text = title,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+    Column(
+        modifier = modifier
+            .background(color)
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
 
-            Text(
-                text = description,
-                textAlign = TextAlign.Justify,
-            )
-        }
+        Text(
+            text = description,
+            textAlign = TextAlign.Justify,
+        )
     }
 }
 

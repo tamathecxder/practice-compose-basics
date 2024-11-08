@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                 ) {
 //                    ArticleContainer(modifier = Modifier)
 //                    TaskWrapper(modifier = Modifier)
-                    QuadrantCardsContainer(modifier = Modifier)
+                    QuadrantCardsContainer()
                 }
             }
         }
