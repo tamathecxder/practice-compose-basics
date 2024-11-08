@@ -25,7 +25,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ArticleContainer(modifier = Modifier)
+//                    ComposeArticleActivity(modifier = Modifier)
+                    TaskWrapper(modifier = Modifier)
                 }
             }
         }
